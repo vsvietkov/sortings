@@ -1,17 +1,30 @@
 <?php
 
-include_once '../../0_Helpers/PHP/php_helpers.php';
+include_once __DIR__ . '/../../0_Helpers/PHP/php_helpers.php';
 
-function bubbleSort(array &$input) {
+function iterativeBubbleSort(SplFixedArray|array &$input)
+{
     $inputLastIndex = count($input) - 1;
 
     for ($i = 0; $i < $inputLastIndex; ++$i) {
-        for ($j = $i + 1; $j <= $inputLastIndex; ++$j) {
-            if ($input[$i] > $input[$j]) {
-                swapArrayElements($input, $i, $j);
+        $swapped = false;
+
+        for ($j = 0; $j < $inputLastIndex - $i; ++$j) {
+            if ($input[$j] > $input[$j + 1]) {
+                swapArrayElements($input, $j, $j + 1);
+                $swapped = true;
             }
         }
+
+        if (!$swapped) {
+            break;
+        }
     }
+}
+
+function recursiveBubbleSort(SplFixedArray|array &$input)
+{
+    
 }
 
 foreach(ARRAY_SIZES_FOR_TESTING as $size) {
@@ -22,7 +35,7 @@ foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     printArray($input);
     echo "\n\n";
 
-    sortingExecutionWrapper('bubbleSort', $input);
+    sortingExecutionWrapper('iterativeBubbleSort', $input);
 
     echo "\nSorted input: ";
     printArray($input);

@@ -2,8 +2,6 @@
 
 include_once '../../0_Helpers/PHP/php_helpers.php';
 
-$input = [10, 5, 12, 4, 2, -7, 0];
-
 function bubbleSort(array &$input) {
     $inputLastIndex = count($input) - 1;
 
@@ -16,12 +14,17 @@ function bubbleSort(array &$input) {
     }
 }
 
-echo 'Not sorted input: ';
-printArray($input);
-echo PHP_EOL;
+foreach(ARRAY_SIZES_FOR_TESTING as $size) {
+    echo "=====\nNumber of elements: $size\n\n";
+    $input = getArrayOfElements($size);
 
-bubbleSort($input);
+    echo 'Not sorted input: ';
+    printArray($input);
+    echo "\n\n";
 
-echo 'Sorted input: ';
-printArray($input);
-echo PHP_EOL;
+    sortingExecutionWrapper('bubbleSort', $input);
+
+    echo "\nSorted input: ";
+    printArray($input);
+    echo "\n\n";
+}

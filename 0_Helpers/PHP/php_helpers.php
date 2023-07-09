@@ -3,7 +3,7 @@
 const ARRAY_SIZES_FOR_TESTING = [10, 20, 1000, 10000];
 
 // Print the usage of memory and time execution after the callback
-function sortingExecutionWrapper(callable $callback, SplFixedArray|array &$callbackArgument)
+function iterativeSortingExecutionWrapper(callable $callback, SplFixedArray|array &$callbackArgument)
 {
     $startTime = hrtime(true);
     $startMemory = memory_get_usage();
@@ -14,14 +14,33 @@ function sortingExecutionWrapper(callable $callback, SplFixedArray|array &$callb
     echo 'Time spent for execution: ' . (hrtime(true) - $startTime) / 1e6 . ' milliseconds' . PHP_EOL;
 }
 
-function getArrayOfElements(int $size): array
+function recursiveSortingExecutionWrapper(callable $callback, SplFixedArray|array &$callbackArgument, int $lastIndex)
 {
+    $startTime = hrtime(true);
+    $startMemory = memory_get_usage();
+
+    $callback($callbackArgument, $lastIndex);
+
+    echo 'Memory used for execution: ' . (memory_get_usage() - $startMemory) . ' bytes' . PHP_EOL;
+    echo 'Time spent for execution: ' . (hrtime(true) - $startTime) / 1e6 . ' milliseconds' . PHP_EOL;
+}
+
+function getArrayOfElements(int $size, bool $printAllocatedMemory = false): array
+{
+    if ($printAllocatedMemory) {
+        $startMemory = memory_get_usage();
+    }
     // $array = new SplFixedArray($size); // Uses less memory but increases execution time
     $array = [];
 
     for ($i = 0; $i < $size; ++$i) {
-        $array[$i] = random_int(-10000, 10000);
+        $array[$i] = random_int(-5000, 5000);
     }
+
+    if ($printAllocatedMemory) {
+        echo 'Memory allocated for input: ' . (memory_get_usage() - $startMemory) . ' bytes' . PHP_EOL;
+    }
+
     return $array;
 }
 

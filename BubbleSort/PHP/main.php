@@ -22,20 +22,36 @@ function iterativeBubbleSort(SplFixedArray|array &$input)
     }
 }
 
-function recursiveBubbleSort(SplFixedArray|array &$input)
+function recursiveBubbleSort(SplFixedArray|array &$input, int $lastIndex)
 {
-    
+    if ($lastIndex === 0) {
+        return;
+    }
+    $swapped = false;
+
+    for ($i = 0; $i < $lastIndex; ++$i) {
+        if ($input[$i] > $input[$i + 1]) {
+            swapArrayElements($input, $i, $i + 1);
+            $swapped = true;
+        }
+    }
+
+    if (!$swapped) {
+        return;
+    }
+    recursiveBubbleSort($input, $lastIndex - 1);
 }
 
 foreach(ARRAY_SIZES_FOR_TESTING as $size) {
-    echo "=====\nNumber of elements: $size\n\n";
+    echo "=====\nNumber of elements: $size\n";
     $input = getArrayOfElements($size);
 
-    echo 'Not sorted input: ';
+    echo "\nNot sorted input: ";
     printArray($input);
     echo "\n\n";
 
-    sortingExecutionWrapper('iterativeBubbleSort', $input);
+    iterativeSortingExecutionWrapper('iterativeBubbleSort', $input);
+    // recursiveSortingExecutionWrapper('recursiveBubbleSort', $input, count($input) - 1);
 
     echo "\nSorted input: ";
     printArray($input);

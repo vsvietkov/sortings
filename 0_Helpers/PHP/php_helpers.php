@@ -1,6 +1,6 @@
 <?php
 
-const ARRAY_SIZES_FOR_TESTING = [10, 20, 1000, 10000];
+const ARRAY_SIZES_FOR_TESTING = [10, 19, 1000, 10000];
 
 // Print the usage of memory and time execution after the callback
 function iterativeSortingExecutionWrapper(callable $callback, SplFixedArray|array &$callbackArgument)

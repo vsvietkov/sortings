@@ -25,6 +25,7 @@ function iterativeBubbleSort(SplFixedArray|array &$input)
 function recursiveBubbleSort(SplFixedArray|array &$input, int $lastIndex)
 {
     if ($lastIndex === 0) {
+        // Only one element left
         return;
     }
     $swapped = false;

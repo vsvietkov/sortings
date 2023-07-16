@@ -30,7 +30,6 @@ foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     echo "\n\n";
 
     iterativeSortingExecutionWrapper('selectionSort', $input);
-    // recursiveSortingExecutionWrapper('recursiveBubbleSort', $input, count($input) - 1);
 
     echo "\nSorted input: ";
     printArray($input);

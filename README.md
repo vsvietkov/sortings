@@ -4,5 +4,4 @@
 
 $language = ['php']
 
-// Name of a directory
 $algorithm = ['BubbleSort', 'InsertionSort', 'SelectionSort']

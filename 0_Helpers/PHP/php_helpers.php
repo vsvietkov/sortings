@@ -2,6 +2,17 @@
 
 const ARRAY_SIZES_FOR_TESTING = [10, 19, 1000, 10000];
 
+function sortingExecutionWrapper(SortingAlgorithm &$algorithm): void
+{
+    $startTime = hrtime(true);
+    $startMemory = memory_get_usage();
+
+    $algorithm->run();
+
+    echo 'Memory used for execution: ' . (memory_get_usage() - $startMemory) . ' bytes' . PHP_EOL;
+    echo 'Time spent for execution: ' . (hrtime(true) - $startTime) / 1e6 . ' milliseconds' . PHP_EOL;
+}
+
 // Print the usage of memory and time execution after the callback
 function iterativeSortingExecutionWrapper(callable $callback, SplFixedArray|array &$callbackArgument, ...$otherArguments)
 {

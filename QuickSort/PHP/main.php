@@ -1,7 +1,7 @@
 <?php
 
 include_once __DIR__ . '/../../0_Helpers/PHP/php_helpers.php';
-include_once __DIR__ . '/MergeSort.php';
+include_once __DIR__ . '/QuickSort.php';
 
 foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     echo "=====\nNumber of elements: $size\n";
@@ -11,10 +11,10 @@ foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     printArray($input);
     echo "\n\n";
 
-    $mergeSort = new MergeSort($input);
-    sortingExecutionWrapper($mergeSort);
+    $quickSort = new QuickSort($input);
+    sortingExecutionWrapper($quickSort);
 
-    echo "\nSorted input (" . ($mergeSort->validate() ? 'true' : 'false') . '): ';
+    echo "\nSorted input (" . ($quickSort->validate() ? 'true' : 'false') . '): ';
     printArray($input);
     echo "\n\n";
 }

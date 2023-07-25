@@ -4,4 +4,4 @@
 
 $language = ['php']
 
-$algorithm = ['BubbleSort', 'InsertionSort', 'SelectionSort']
+$algorithm = ['BubbleSort', 'InsertionSort', 'SelectionSort', 'MergeSort', 'QuickSort']

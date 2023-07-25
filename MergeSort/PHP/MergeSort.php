@@ -14,7 +14,7 @@ class MergeSort extends SortingAlgorithm
         if ($startIndex >= $endIndex) {
             return;
         }
-        $middleIndex = ($startIndex + $endIndex) / 2;
+        $middleIndex = (int)( ($startIndex + $endIndex) / 2 );
 
         self::_mergeSort($input, $startIndex, $middleIndex);
         self::_mergeSort($input, $middleIndex + 1, $endIndex);

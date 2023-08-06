@@ -3,6 +3,8 @@
         "psr-4": {
             "Helpers\\": "0_Helpers/PHP/",
             "BubbleSort\\": "BubbleSort/PHP/",
+            "InsertionSort\\": "InsertionSort/PHP/",
+            "SelectionSort\\": "SelectionSort/PHP/",
             "QuickSort\\": "QuickSort/PHP/",
             "MergeSort\\": "MergeSort/PHP/"
         }

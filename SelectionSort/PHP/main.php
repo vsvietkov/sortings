@@ -2,24 +2,8 @@
 
 include_once __DIR__ . '/../../0_Helpers/PHP/php_helpers.php';
 
-function selectionSort(SplFixedArray|array &$input)
-{
-    $inputLastIndex = count($input) - 1;
-
-    for ($i = 0; $i < $inputLastIndex; ++$i) {
-        $minValueIndex = $i;
-
-        for ($j = $i + 1; $j <= $inputLastIndex; ++$j) {
-            if ($input[$j] < $input[$minValueIndex]) {
-                $minValueIndex = $j;
-            }
-        }
-
-        if ($i < $minValueIndex) {
-            swapArrayElements($input, $i, $minValueIndex);
-        }
-    }
-}
+use Helpers\Decorators\ExecutionStatisticDecorator;
+use SelectionSort\SelectionSort;
 
 foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     echo "=====\nNumber of elements: $size\n";
@@ -29,9 +13,11 @@ foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     printArray($input);
     echo "\n\n";
 
-    iterativeSortingExecutionWrapper('selectionSort', $input);
+    $selectionSort = new SelectionSort($input);
+    $decorator = new ExecutionStatisticDecorator($selectionSort);
+    $decorator->run();
 
-    echo "\nSorted input: ";
+    echo "\nSorted input (" . ($decorator->validate() ? 'true' : 'false') . '): ';
     printArray($input);
     echo "\n\n";
 }

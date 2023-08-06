@@ -13,8 +13,8 @@ foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     printArray($input);
     echo "\n\n";
 
-    // $bubbleSort = new BubbleSort($input);
-    $bubbleSort = new RecursiveBubbleSort($input);
+    $bubbleSort = new BubbleSort($input);
+    // $bubbleSort = new RecursiveBubbleSort($input);
     $decorator = new ExecutionStatisticDecorator($bubbleSort);
     $decorator->run();
 

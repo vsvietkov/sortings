@@ -1,6 +1,6 @@
-<?php
+<?php namespace MergeSort;
 
-include_once __DIR__ . '/../../0_Helpers/PHP/SortingAlgorithm.php';
+use Helpers\SortingAlgorithm;
 
 class MergeSort extends SortingAlgorithm
 {

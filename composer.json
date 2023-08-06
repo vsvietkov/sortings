@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Helpers\\": "0_Helpers/PHP/",
+            "BubbleSort\\": "BubbleSort/PHP/",
+            "QuickSort\\": "QuickSort/PHP/",
+            "MergeSort\\": "MergeSort/PHP/"
+        }
+    }
+}

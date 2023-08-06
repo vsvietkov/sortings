@@ -1,7 +1,5 @@
 # Usage
 
-`make $language ALG=$algorithm`
-
-$language = ['php']
+`make run ALG=$algorithm`
 
 $algorithm = ['BubbleSort', 'InsertionSort', 'SelectionSort', 'MergeSort', 'QuickSort']

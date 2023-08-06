@@ -1,7 +1,9 @@
-<?php
+<?php require_once __DIR__ . '/../../vendor/autoload.php';
 
 include_once __DIR__ . '/../../0_Helpers/PHP/php_helpers.php';
-include_once __DIR__ . '/QuickSort.php';
+
+use Helpers\Decorators\ExecutionStatisticDecorator;
+use QuickSort\QuickSort;
 
 foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     echo "=====\nNumber of elements: $size\n";
@@ -12,9 +14,10 @@ foreach(ARRAY_SIZES_FOR_TESTING as $size) {
     echo "\n\n";
 
     $quickSort = new QuickSort($input);
-    sortingExecutionWrapper($quickSort);
+    $decorator = new ExecutionStatisticDecorator($quickSort);
+    $decorator->run();
 
-    echo "\nSorted input (" . ($quickSort->validate() ? 'true' : 'false') . '): ';
+    echo "\nSorted input (" . ($decorator->validate() ? 'true' : 'false') . '): ';
     printArray($input);
     echo "\n\n";
 }

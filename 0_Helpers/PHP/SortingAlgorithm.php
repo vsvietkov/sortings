@@ -1,6 +1,8 @@
-<?php
+<?php namespace Helpers;
 
-abstract class SortingAlgorithm
+use Helpers\ISortingAlgorithm;
+
+abstract class SortingAlgorithm implements ISortingAlgorithm
 {
     protected SplFixedArray|array $_input;
 
@@ -19,6 +21,4 @@ abstract class SortingAlgorithm
         }
         return true;
     }
-
-    abstract public function run(): void;
 }

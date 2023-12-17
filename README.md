@@ -6,6 +6,8 @@ Run the following commands:
 
 # Usage
 
-`make run ALG=$algorithm`
+`make run LANG=$lang ALG=$algorithm`
+
+$lang = ['go', 'php']
 
 $algorithm = ['BubbleSort', 'InsertionSort', 'SelectionSort', 'MergeSort', 'QuickSort']
